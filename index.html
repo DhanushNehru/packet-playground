@@ -7,6 +7,7 @@
 <script>
 'use strict';
 const $=s=>document.querySelector(s), main=$('#main');
+document.querySelector('.skip').onclick=event=>{event.preventDefault();main.focus();main.scrollIntoView({block:'start'})};
 const STORE='packet-playground-v1';
 let saved={completed:[],theme:'dark',motion:false};let storageOK=true;
 try{const v=JSON.parse(localStorage.getItem(STORE)||'null');if(v&&typeof v==='object'){saved.completed=Array.isArray(v.completed)?v.completed.filter(x=>['packet','layers','subnet','dns','transport','web'].includes(x)):[];saved.theme=v.theme==='light'?'light':'dark';saved.motion=!!v.motion}}catch(e){storageOK=false}
